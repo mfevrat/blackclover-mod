@@ -1,7 +1,54 @@
-# Black Clover : Grimoires — mod Forge 1.20.1
+# Black Clover : Grimoires — mod Forge 1.20.1 (v2.0)
 
 Mod de magie inspiré de l'animé : cérémonie de la Tour des Grimoires, 8 attributs magiques
 (24 sorts), trèfles à 3 / 4 / 5 feuilles et 3 boss.
+
+
+## Nouveautés de la version 2.0
+
+**Objets en 3D.** Le grimoire est un vrai livre en volume (couverture, pages, fermoir, coins en métal, trèfle en relief).
+Son modèle change selon le trèfle : 3 feuilles doré, 4 feuilles vert, 5 feuilles noir et rouge. Le cristal, la clé,
+la larme, le cœur, le fragment, la page et la convocation sont aussi en 3D. Quand tu tiens ton grimoire, ton personnage
+le tient ouvert devant lui, et il tend le bras quand tu lances un sort.
+
+**Ordres de chevaliers-mages** (capuche + robe, avec une vraie cape 3D qui flotte au vent) :
+
+| Ordre | Laine | Bonus de l'ensemble complet |
+|---|---|---|
+| Corbeaux d'Onyx | noire | +25 % de puissance des sorts |
+| Cerfs d'Azur | bleue | +50 % de régénération de mana |
+| Phénix Écarlates | rouge | immunité au feu, -20 % de recharge |
+| Serpents de Jade | verte | Vitesse I, -20 % de coût en mana |
+| Hiboux d'Argent | blanche | vision nocturne, +40 mana max |
+
+Capuche : `laine laine laine / laine cristal laine`. Robe : `laine _ laine / laine cristal laine / laine or laine`.
+Cristal de mana : `améthyste lapis améthyste / lapis diamant lapis / améthyste lapis améthyste` (donne 2 cristaux).
+
+**Boss en 3D, avec des designs originaux :** colosse de pierre aux cristaux runiques, roi elfe à couronne, halo et
+quatre ailes de lumière, archidémon à cornes, ailes de chauve-souris articulées et queue. Chacun a ses animations
+(marche, respiration, frappe, incantation, griffe, rugissement de transformation).
+
+**Cinématiques :** la caméra prend le contrôle pendant la cérémonie (plongée dans la tour, poursuite du grimoire,
+gros plan au moment où il s'ouvre), à l'apparition, à la transformation et à la mort des boss, et quand tu lances
+un sort ultime. Touche **V** pour passer.
+
+**Cercles magiques et rayons en 3D :** un cercle tourne sous tes pieds à chaque sort, et les attaques des boss
+ont leurs propres cercles et colonnes de lumière.
+
+**Page ultime (niveau 9, ou 7 avec un trèfle à 4/5 feuilles) :**
+
+| Attribut | Sort ultime |
+|---|---|
+| Feu | Couronne de météores : un cercle dans le ciel fait pleuvoir des météores |
+| Eau | Prison abyssale : une sphère d'eau emprisonne et noie les ennemis, puis explose |
+| Vent | Déchirure céleste : 12 lames de vent jaillissent d'un cercle dans ton dos |
+| Foudre | Lance du ciel : un éclair géant tombe d'un cercle céleste |
+| Ténèbres | Éclipse : le ciel s'assombrit, les ennemis sont aspirés puis écrasés |
+| Lumière | Cathédrale de lumière : 8 colonnes forment une zone qui soigne et repousse |
+| Épines | Arbre-monde : des racines immobilisent jusqu'à 10 ennemis, tu es soigné |
+| Anti-magie | Lame du néant : une tranche géante qui efface toute magie autour de toi |
+
+**16 succès** dans un onglet « Black Clover : Grimoires » (grimoire, trèfles rares, pages, ordres, boss...).
 
 ## 1. Installation (une seule fois)
 
@@ -13,7 +60,7 @@ Mod de magie inspiré de l'animé : cérémonie de la Tour des Grimoires, 8 attr
 4. Ouvre le dossier dans IntelliJ (`File > Open`), attends la fin du chargement Gradle (quelques minutes la 1re fois).
 5. Lance le jeu : onglet Gradle > `forgegradle runs` > **runClient**, ou dans un terminal : `gradlew runClient`.
 
-Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-1.0.0.jar`
+Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-2.0.0.jar`
 (à mettre dans le dossier `mods` d'un Minecraft avec Forge 1.20.1).
 
 ## 2. Comment jouer
@@ -30,11 +77,11 @@ dans l'**Overworld**, et **la nuit**. (En créatif, les conditions de niveau et 
 **Chances :** trèfle à 3 feuilles (normal), 4 feuilles 7 % (plus fort, pages débloquées plus tôt),
 5 feuilles = Anti-magie : 1 %, ou garanti si tu portes un *Fragment de démon* (lâché par Morvath).
 
-**Touches :** `R` lancer le sort · `G` page suivante · clic droit sur le grimoire = voir les pages.
+**Touches :** `R` lancer le sort · `G` page suivante · `V` passer une cinématique · clic droit sur le grimoire = voir les pages.
 Les touches se changent dans Options > Commandes > Black Clover.
 
 **Progression :** tuer des monstres et lancer des sorts donne de l'XP de grimoire.
-Pages débloquées aux niveaux 1, 3 et 6 (niveau max 10).
+Pages débloquées aux niveaux 1, 3, 6 et 9 (niveau max 10).
 *Cristal de mana* = +20 mana max · *Page ancienne* = +250 XP.
 
 ## 3. Les boss (clic droit sur le sol avec l'objet)
@@ -65,6 +112,9 @@ l'Anti-magie lui inflige double dégâts.
 | Modifier l'architecture de la tour | `ceremony/GrimoireTower.java` |
 | Rendre un boss plus fort | `entity/boss/*.java` → `createAttributes` et `performAttack` |
 | Position du grimoire flottant | `client/FloatingGrimoireLayer.java` → `ps.translate(...)` |
+| Trajectoires des cinématiques | `client/CinematicManager.java` → `place()` |
+| Forme des boss | `gen/bossmodels.py` (puis relance-le) ou directement `client/model/*.java` |
+| Bonus des ordres | `magic/KnightOrder.java`, `event/CommonEvents.java` |
 | Textures | `assets/blackclover/textures/` (ouvre-les dans un éditeur de pixel art) |
 
 Astuce : la tour est construite une seule fois par monde. Si tu modifies `GrimoireTower.java`,
