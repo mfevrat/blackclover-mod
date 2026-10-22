@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blackclover:item/grimoire_cover",
+    "layer1": "blackclover:item/grimoire_overlay"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["OPO", "PSP", "OPO"],
+  "key": {
+    "O": {"item": "minecraft:crying_obsidian"},
+    "P": {"item": "blackclover:ancient_page"},
+    "S": {"item": "minecraft:wither_skeleton_skull"}
+  },
+  "result": {"item": "blackclover:demon_heart"}
+}

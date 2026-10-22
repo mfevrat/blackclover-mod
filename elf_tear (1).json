@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["GCG", "CTC", "GCG"],
+  "key": {
+    "G": {"item": "minecraft:glowstone_dust"},
+    "C": {"item": "blackclover:mana_crystal"},
+    "T": {"item": "minecraft:ghast_tear"}
+  },
+  "result": {"item": "blackclover:elf_tear"}
+}

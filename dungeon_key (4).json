@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" E ", "GMG", " M "],
+  "key": {
+    "E": {"item": "minecraft:ender_eye"},
+    "G": {"item": "minecraft:gold_ingot"},
+    "M": {"item": "minecraft:mossy_stone_bricks"}
+  },
+  "result": {"item": "blackclover:dungeon_key"}
+}
