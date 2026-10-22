@@ -16,10 +16,15 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.1.1
+      - name: Decompresser le projet
+        run: unzip -o blackclover-mod.zip
       - name: Compiler le mod
+        working-directory: blackclover-mod
         run: gradle build --no-daemon
+      - name: Verifier que le mod n'est pas vide
+        run: unzip -l blackclover-mod/build/libs/*.jar | grep BlackCloverMod.class
       - name: Envoyer le .jar
         uses: actions/upload-artifact@v4
         with:
           name: blackclover-mod-jar
-          path: build/libs/*.jar
+          path: blackclover-mod/build/libs/*.jar
