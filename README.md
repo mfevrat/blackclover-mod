@@ -1,8 +1,38 @@
-# Black Clover : Grimoires — mod Forge 1.20.1 (v2.0)
+# Black Clover : Grimoires — mod Forge 1.20.1 (v3.0)
 
 Mod de magie inspiré de l'animé : cérémonie de la Tour des Grimoires, 8 attributs magiques
 (24 sorts), trèfles à 3 / 4 / 5 feuilles et 3 boss.
 
+
+
+## Nouveautés de la version 3.0
+
+**Objets animés partout** (inventaire, main, sol, cadres) : le grimoire est un vrai livre qui s'ouvre, tourne ses
+pages et se referme dans l'inventaire ; en main il reste ouvert et ses pages s'emballent quand tu lances un sort.
+Le cristal tourne et brille, le cœur démoniaque bat, la larme elfique flotte et scintille, la clé se balance,
+la page ondule et la convocation oscille.
+
+**Armures en vrai 3D** : capuche avec visière et drapé, mantelet, col, épaulettes en métal, ceinture à boucle,
+écharpe, emblème et pans de robe. Chaque ordre a son accessoire : plumes et bec (Corbeaux), bois de cerf (Cerfs),
+crête de flammes lumineuse (Phénix), capuchon de cobra et crocs (Serpents), aigrettes et mantelet de plumes (Hiboux).
+
+**Boss beaucoup plus détaillés** : 54, 73 et 91 pièces au lieu de 9 à 23. Les courbes (cornes en spirale, queue,
+ailes) sont faites de nombreux segments inclinés. Nouvelles animations : marche lourde avec genoux et coudes,
+mâchoires qui s'ouvrent, cheveux, robe et cape qui ondulent, plumes qui battent une à une, doigts, réaction aux coups,
+animation de mort (le boss s'effondre au lieu de basculer).
+
+**Structures d'invocation** générées dans le monde, chacune avec un autel et deux coffres :
+
+| Structure | Où | Boss |
+|---|---|---|
+| Ruines du Donjon | plaines, forêts, taïga, savane, prairies | Gardien du Donjon |
+| Sanctuaire elfique | forêts de bouleaux, forêts de fleurs, cerisiers, prairies | Roi Elfe Spectral |
+| Portail démoniaque | Nether, au-dessus de la mer de lave | Archidémon Morvath |
+
+Clic droit avec l'objet d'invocation **dans le vide** : il t'indique la direction, la distance et les coordonnées
+de la structure la plus proche. Clic droit **sur l'autel** : rituel de 5 secondes, puis le boss surgit au centre
+de l'arène. En créatif : `/place structure blackclover:dungeon_ruins` (ou `elf_sanctuary`, `demon_gate`).
+Les structures n'apparaissent que dans les **nouveaux chunks** : explore plus loin ou crée un nouveau monde.
 
 ## Nouveautés de la version 2.0
 
@@ -60,7 +90,7 @@ ont leurs propres cercles et colonnes de lumière.
 4. Ouvre le dossier dans IntelliJ (`File > Open`), attends la fin du chargement Gradle (quelques minutes la 1re fois).
 5. Lance le jeu : onglet Gradle > `forgegradle runs` > **runClient**, ou dans un terminal : `gradlew runClient`.
 
-Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-2.0.0.jar`
+Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-3.0.0.jar`
 (à mettre dans le dossier `mods` d'un Minecraft avec Forge 1.20.1).
 
 ## 2. Comment jouer
@@ -113,7 +143,9 @@ l'Anti-magie lui inflige double dégâts.
 | Rendre un boss plus fort | `entity/boss/*.java` → `createAttributes` et `performAttack` |
 | Position du grimoire flottant | `client/FloatingGrimoireLayer.java` → `ps.translate(...)` |
 | Trajectoires des cinématiques | `client/CinematicManager.java` → `place()` |
-| Forme des boss | `gen/bossmodels.py` (puis relance-le) ou directement `client/model/*.java` |
+| Forme des boss | `gen/bosses_v3.py` (lance `python3 bosses_v3.py` dans `gen/`) |
+| Forme des armures | `gen/armor_v3.py` |
+| Forme des structures | `gen/structures.py` |
 | Bonus des ordres | `magic/KnightOrder.java`, `event/CommonEvents.java` |
 | Textures | `assets/blackclover/textures/` (ouvre-les dans un éditeur de pixel art) |
 
