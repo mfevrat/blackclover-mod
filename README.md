@@ -1,10 +1,45 @@
-# Black Clover : Grimoires — mod Forge 1.20.1 (v3.1)
+# Black Clover : Grimoires — mod Forge 1.20.1 (v4.0)
 
 Mod de magie inspiré de l'animé : cérémonie de la Tour des Grimoires, 8 attributs magiques
 (24 sorts), trèfles à 3 / 4 / 5 feuilles et 3 boss.
 
 
 
+
+
+## Nouveautés de la version 4.0
+
+**Apparitions des boss repensées :** le Gardien s'assemble à partir de 12 rochers runiques qui s'éveillent autour de
+l'arène, se soulèvent puis fusionnent ; le Roi Elfe descend du ciel en planant dans un rai de lumière ; l'Archidémon
+émerge d'une mare de liquide noir bouillonnante entourée de tentacules d'ombre.
+
+**Combats plus lisibles :** les boss attendent environ 60 % plus longtemps entre deux attaques.
+
+**Nouveaux designs à chaque phase :** le Gardien « s'éveille » (veines runiques lumineuses, couronne de cristaux géants,
+pointes aux bras), le Roi Elfe « s'élève » (robe dorée, seconde paire d'ailes géantes, second halo), l'Archidémon
+prend une seconde forme (nouvelles cornes, veines rouges) puis une forme abyssale (couronne de flammes, yeux, lames).
+
+**Boss final : Le Créateur** (1500 PV, 8 blocs de haut, 3 phases) sur le **Trône du Créateur** dans l'End.
+Sceau de l'Origine : `_ page _ / étoile fragment étoile / _ page _`.
+
+**Ordres de chevaliers :** chaque ordre a son **quartier général** (dans des biomes différents) avec son capitaine.
+Pour rejoindre un ordre, va au **Colisée des Chevaliers-Mages** et fais un clic droit sur le pupitre au centre :
+1. les cinq capitaines arrivent dans leurs loges ;
+2. épreuve : vaincs 6 adversaires en 90 secondes ;
+3. chaque capitaine lève la main... ou non (selon ta note, ton attribut et tes exploits) ;
+4. clic droit sur le capitaine de ton choix pour rejoindre son ordre (tenue offerte, +10 % d'XP de grimoire).
+Si personne ne lève la main, tu pourras retenter le lendemain.
+
+**Butin :** tenues d'ordre dans les coffres de donjons, mines, temples, manoirs, avant-postes...
+et, très rarement, un fragment de démon dans les cités antiques, bastions, cités de l'End.
+
+**Nouvelles particules** dessinées pour chaque élément (feux follets, gouttes, traînées de vent, arcs électriques,
+volutes sombres, étoiles, pétales, cendres, runes, éclats de roche).
+
+**Grimoire en main :** pages tournées vers toi.
+
+Commandes utiles en créatif : `/place structure blackclover:knight_colosseum`, `blackclover:creator_throne`,
+`blackclover:hq_onyx_ravens` (ou un autre ordre).
 
 ## Nouveautés de la version 3.1
 
@@ -117,7 +152,7 @@ ont leurs propres cercles et colonnes de lumière.
 4. Ouvre le dossier dans IntelliJ (`File > Open`), attends la fin du chargement Gradle (quelques minutes la 1re fois).
 5. Lance le jeu : onglet Gradle > `forgegradle runs` > **runClient**, ou dans un terminal : `gradlew runClient`.
 
-Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-3.1.0.jar`
+Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-4.0.0.jar`
 (à mettre dans le dossier `mods` d'un Minecraft avec Forge 1.20.1).
 
 ## 2. Comment jouer
@@ -170,11 +205,13 @@ l'Anti-magie lui inflige double dégâts.
 | Rendre un boss plus fort | `entity/boss/*.java` → `createAttributes` et `performAttack` |
 | Position du grimoire flottant | `client/FloatingGrimoireLayer.java` → `ps.translate(...)` |
 | Trajectoires des cinématiques | `client/CinematicManager.java` → `place()` |
-| Forme des boss | `gen/bosses_v3.py` (lance `python3 bosses_v3.py` dans `gen/`) |
+| Forme des boss | `gen/bosses_v4.py` et `gen/creator.py` |
 | Forme des armures | `gen/armor_v4.py` |
 | Forme des épées | `gen/swords.py` |
 | Poses du personnage | `client/AnimatedPlayerModel.java` |
-| Forme des structures | `gen/structures.py` |
+| Forme des structures | `gen/structures.py` et `gen/structures_v2.py` |
+| Examen d'entrée (notes, exigences des capitaines) | `order/ExamManager.java` |
+| Probabilités dans les coffres | `data/blackclover/loot_modifiers/*.json` |
 | Bonus des ordres | `magic/KnightOrder.java`, `event/CommonEvents.java` |
 | Textures | `assets/blackclover/textures/` (ouvre-les dans un éditeur de pixel art) |
 
