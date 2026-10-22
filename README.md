@@ -1,9 +1,36 @@
-# Black Clover : Grimoires — mod Forge 1.20.1 (v3.0)
+# Black Clover : Grimoires — mod Forge 1.20.1 (v3.1)
 
 Mod de magie inspiré de l'animé : cérémonie de la Tour des Grimoires, 8 attributs magiques
 (24 sorts), trèfles à 3 / 4 / 5 feuilles et 3 boss.
 
 
+
+
+## Nouveautés de la version 3.1
+
+**Le personnage joue la scène.** Au départ vers la Tour, huit grimoires surgissent et tournoient autour de toi,
+une colonne de lumière tombe du ciel et ton personnage s'élève bras écartés, filmé par la caméra.
+Dans la Tour, tu descends du sommet et tu atterris en pose de super-héros (onde de choc dorée), tu observes les
+grimoires, tu tends les mains vers celui qui te choisit, puis tu lèves le poing. Devant un autel, tu lèves l'offrande
+au-dessus de ta tête puis tu l'abats vers l'autel, pendant qu'une caméra passe du gros plan au plan large de l'arène.
+Les autres joueurs voient aussi ces animations.
+
+**Anti-magie : quatre épées** invoquées depuis le grimoire (le bras se lève, un cercle démoniaque apparaît, l'épée
+en sort et arrive dans ta main). L'épée remplace l'objet en main pendant 30 secondes, puis il te revient.
+
+| Page | Épée | Clic droit | Passif |
+|---|---|---|---|
+| 1 | Épée du Démon | grande tranche en arc qui dissipe la magie | renvoie les projectiles |
+| 2 | Épée du Habitacle | libère une tranche d'énergie, plus forte selon la magie absorbée | absorbe les sorts autour |
+| 3 | Épée du Destructeur | ANNIHILDA : brise malédictions, effets et sorts sur 12 blocs, interrompt les boss | — |
+| 4 | Sabre du Démon | traverse et tranche uniquement la cible visée | très rapide |
+
+**Tenues refaites :** capuche pointue bordée d'or, doublure colorée, mantelet, col, revers, boutons, ceinture et sacoche,
+pans de manteau, épaulettes à deux plaques, brassards, gants, grand emblème brodé dans le dos, et un accessoire
+retravaillé par ordre (bec et collerette de plumes, bois ramifiés et col de fourrure, crête et ailes de flammes,
+capuchon de cobra avec yeux et serpent enroulé au bras, aigrettes, lunettes et mantelet de plumes).
+
+**Grimoire en main :** il est maintenant tenu droit, ouvert, pages face à toi.
 
 ## Nouveautés de la version 3.0
 
@@ -90,7 +117,7 @@ ont leurs propres cercles et colonnes de lumière.
 4. Ouvre le dossier dans IntelliJ (`File > Open`), attends la fin du chargement Gradle (quelques minutes la 1re fois).
 5. Lance le jeu : onglet Gradle > `forgegradle runs` > **runClient**, ou dans un terminal : `gradlew runClient`.
 
-Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-3.0.0.jar`
+Pour créer le fichier .jar à donner à tes amis : `gradlew build` → `build/libs/blackclover-3.1.0.jar`
 (à mettre dans le dossier `mods` d'un Minecraft avec Forge 1.20.1).
 
 ## 2. Comment jouer
@@ -144,7 +171,9 @@ l'Anti-magie lui inflige double dégâts.
 | Position du grimoire flottant | `client/FloatingGrimoireLayer.java` → `ps.translate(...)` |
 | Trajectoires des cinématiques | `client/CinematicManager.java` → `place()` |
 | Forme des boss | `gen/bosses_v3.py` (lance `python3 bosses_v3.py` dans `gen/`) |
-| Forme des armures | `gen/armor_v3.py` |
+| Forme des armures | `gen/armor_v4.py` |
+| Forme des épées | `gen/swords.py` |
+| Poses du personnage | `client/AnimatedPlayerModel.java` |
 | Forme des structures | `gen/structures.py` |
 | Bonus des ordres | `magic/KnightOrder.java`, `event/CommonEvents.java` |
 | Textures | `assets/blackclover/textures/` (ouvre-les dans un éditeur de pixel art) |
